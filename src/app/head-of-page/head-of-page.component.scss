@@ -1,0 +1,44 @@
+.test {
+  background-color: #ffd777;
+  width: 100%;
+
+  h1{
+    color: white;
+    margin-left: 10px;
+    text-align: center;
+
+    .logo{
+      align-self: center;
+      margin-top: -5px;
+      align-self: center;
+      margin-right: -4px;
+    }
+  }
+  .toggelBtn{
+    &:hover{
+      box-shadow: 0px 0px 10px white,0px 0px 40px white,0px 0px 80px white;
+    }
+  }
+  .navList{
+    .Home,.About,.Contact{
+      border: 0;
+      margin: 5px;
+      min-width: 70px;
+      height: 40px;
+      background-color: gray;
+      &:hover {
+        box-shadow: 0px 0px 10px white,0px 0px 40px white,0px 0px 80px white;
+        transform: translateY(-3px);
+      }
+      a{
+        color: white;
+      }
+    }
+  }
+  .class1{
+    box-shadow: 0px 0px 10px white,0px 0px 40px white,0px 0px 80px white;
+    transform: translateY(-2px);
+  }
+}
+
+

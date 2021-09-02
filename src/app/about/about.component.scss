@@ -1,0 +1,26 @@
+.div1 {
+  position: relative;
+
+  img{
+    width: 50%;
+    height: 50%;
+    /* Center vertically and horizontally */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -200px 0 0 -160px; /* apply negative top and left margins to truly center the element */
+  }
+  h3{
+    top: 15%;
+    position: absolute;
+    left:40%;
+
+  }
+  p{
+    position: absolute;
+    top: 25%;
+    left:10%;
+    font-size:16px;
+  }
+
+}

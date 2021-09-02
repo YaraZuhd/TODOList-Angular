@@ -1,0 +1,102 @@
+<div class="row">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <p>
+        Welcome To Our Website, We're Happy That You Chose Us To Help You Arranging Your
+        Work With Our List, Have Fun
+      </p>
+    </div>
+  </div>
+  <div class="testStyle col-md-10 mx-auto">
+    <div class="contain">
+      <div class="title">
+        <h4 class="m-1">
+          <i class="bi bi-list-task align-content-center"></i>
+          Todo List
+        </h4>
+      </div>
+      <div class="displayData">
+        <div class="tableContent mt-3 table-responsive">
+          <p-table [value]="todo"
+                   class="table table-bordered"
+                   responsiveLayout="scroll"
+                   [reorderableColumns]="true"
+          >
+            <ng-template pTemplate="header">
+              <tr>
+                <th pSortableColumn="checked">Checked</th>
+                <th pSortableColumn="nameOfTask" pReorderableColumn>
+                  Name <p-sortIcon field="nameOfTask"></p-sortIcon></th>
+                <th pSortableColumn="createdAt" pReorderableColumn>
+                  CreatedAt <p-sortIcon field="createdAt"></p-sortIcon></th>
+                <th pSortableColumn="completedAt" pReorderableColumn>
+                  CompletedAt <p-sortIcon field="completedAt"></p-sortIcon></th>
+                <th pSortableColumn="priority" pReorderableColumn>
+                  Priority <p-sortIcon field="priority"></p-sortIcon></th>
+                <th pSortableColumn="tag" pReorderableColumn>
+                  Tag <p-sortIcon field="tag"></p-sortIcon></th>
+                <th pSortableColumn="controls" style="min-width: 300px" pReorderableColumn>Controls</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-todos let-index="rowIndex">
+
+              <tr [pReorderableRow]="index" *ngIf="!todos.checked; else ff">
+                <td style="text-align: center;vertical-align: middle" [pReorderableRowHandle] = "index">
+                  <input type="checkbox" (click)="Checked(index)"></td>
+                <td [pReorderableRowHandle] = "index">{{todos.nameOfTask}}</td>
+                <td [pReorderableRowHandle] = "index">{{todos.createdAt | date:'d-M-y h:mm:ss'}}</td>
+                <td [pReorderableRowHandle] = "index">{{todos?.completedAt | date: ''}}</td>
+                <td [pReorderableRowHandle] = "index">{{todos.priority}}</td>
+                <td [pReorderableRowHandle] = "index">{{todos.tag}}</td>
+                <td [pReorderableRowHandle] = "index" style="min-width: 300px">
+                  <button class="btn btn-success" (click)="Checked(index)">
+                    <i class="fa fa-check " aria-hidden="true " style="color:white;"></i>
+                  </button>
+                  <button class="btn btn-danger m-2" (click)="confirm(index)">
+                    <i class="fa fa-trash" aria-hidden="true" style="color:white;"></i>
+                  </button>
+                  <button class="btn btn-info" (click)="edit(index)">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>
+                  </button>
+                </td>
+              </tr>
+              <ng-template #ff>
+                <tr [pReorderableRow]="index" style="background-color: #eee">
+                  <td style="text-align: center;vertical-align: middle" [pReorderableRowHandle] = "index">
+                    <input type="checkbox" (click)="Checked(index)" checked></td>
+                  <td [pReorderableRowHandle] = "index">{{todos.nameOfTask}}</td>
+                  <td [pReorderableRowHandle] = "index">{{todos.createdAt | date:'d-M-y h:mm:ss'}}</td>
+                  <td [pReorderableRowHandle] = "index">{{todos?.completedAt | date:'d-M-y h:mm:ss'}}</td>
+                  <td [pReorderableRowHandle] = "index">{{todos.priority}}</td>
+                  <td [pReorderableRowHandle] = "index">{{todos.tag}}</td>
+                  <td [pReorderableRowHandle] = "index" style="min-width: 300px">
+                    <button class="btn btn-success" (click)="Checked(index)">
+                      <i class="fa fa-check " aria-hidden="true " style="color:white;"></i>
+                    </button>
+                    <button class="btn btn-danger m-2" (click)="confirm(index)">
+                      <i class="fa fa-trash" aria-hidden="true" style="color:white;"></i>
+                    </button>
+                    <button class="btn btn-info" (click)="edit(index)">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:white;"></i>
+                    </button>
+                  </td>
+                </tr>
+              </ng-template>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+      <button id="btnAdd"
+              class="addTask btn btnAddTask"
+              type="button"
+              routerLink="/add-task"
+      >
+        Add New Task
+      </button>
+    </div>
+  </div>
+</div>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000"></p-confirmDialog>
+
+<p-messages [value]="msgs"></p-messages>

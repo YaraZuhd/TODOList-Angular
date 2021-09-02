@@ -1,0 +1,53 @@
+
+<form [formGroup]="UserTask" (ngSubmit)="submitTask()" class="form mx-auto" >
+  <h1 class="mb-1 mt-1" style="color: white" *ngIf="addForm">Add A New Task</h1>
+  <h1 class="mb-1 mt-1" style="color: white" *ngIf="!addForm">Update The Old Task</h1>
+  <div class="form-group row">
+    <label class="col-sm-12 col-form-label m-1">Name Of The Task</label>
+    <div class="col-sm-12 ms-1 col-form-label mr-2">
+      <textarea class="form-control" formControlName="taskName" rows="3"></textarea>
+      <span *ngIf=" addForm && UserTask.get('taskName')?.invalid && UserTask.get('taskName')?.touched" style="color: red">
+        * Please Enter the Name Of Task before adding the task.</span>
+    <span *ngIf=" !addForm && UserTask.get('taskName')?.invalid && UserTask.get('taskName')?.touched" style="color: red">
+        * Please Enter the Name Of Task Before Updating The Task.</span>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-12 col-form-label m-1">Chose A Priority</label>
+    <div class="col-sm-12 ms-1 col-form-label">
+
+      <p-dropdown  *ngIf="addForm" [options]="userPriority" [style]="{'width': '100%'}"
+                  class="input" formControlName="priority" optionLabel="value"
+                  optionValue="value"
+                   placeholder="Select a Priority"></p-dropdown>
+
+      <p-dropdown  *ngIf="!addForm" [options]="userPriority" [style]="{'width': '100%'}"
+                   class="input" formControlName="priority" optionLabel="value"
+                   optionValue="value" [(ngModel)]="selectedPriority" ></p-dropdown>
+
+      <span *ngIf="addForm && UserTask.get('priority')?.invalid && UserTask.get('priority')?.touched"
+            style="color: red">
+           * Please Select An Option From Priority List Before Adding The Task.</span>
+
+<!--      <span *ngIf="!addForm && UserTask.get('priority')?.invalid && UserTask.get('priority')?.touched"-->
+<!--            style="color: red">-->
+<!--            * Please Select An Option From Priority List Before Updating The Task.</span>-->
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-12 col-form-label m-1">Tag For The Task</label>
+    <div class="col-sm-12 ms-1 col-form-label">
+      <input type="text" formControlName="tag" class="form-control">
+    </div>
+  </div>
+  <br>
+  <div class="form-group text-end m-2">
+    <button type="submit" class="btn btn-success btn-sm" width="30"
+            [disabled]="!UserTask.valid"
+    >Add Task</button>
+    <button type="button" class="btn btn-danger btn-sm m-2" routerLink="/" width="30">Close</button>
+  </div>
+</form>
+

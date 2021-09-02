@@ -1,0 +1,89 @@
+p{
+  margin-top: 40px;
+  text-align: center;
+  font-size: medium;
+  color: #6b6b6b;
+}
+
+.testStyle{
+  background-color: #dcd9d9;
+  height: auto;
+  margin-top: 25px;
+  margin-left: 35vh;
+  width: 70%;
+  box-shadow: 0px 0px 10px 0px #e3e2e2;
+  padding: 10px;
+  .contain{
+    .title{
+      h4 {
+        color: #524f4f;
+        font-weight: bold;
+      }
+    }
+    .displayData{
+      border: 2px #797979;
+      border-top-left-radius :6px;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      border-top-right-radius :6px;
+
+
+      table {
+        background-color: white;
+      }
+
+      th{
+        cursor: pointer;
+        text-align: center;
+      }
+
+      tr{
+        cursor: move;
+        align-items: center;
+      }
+
+      td{
+        width: fit-content;
+        text-align: center;
+      }
+    }
+
+    .btnAddTask {
+      margin-top: 1%;
+      margin-bottom: 1%;
+      background-color: #5CB8C5;
+      color: white;
+      border: 2px #797979;
+      border-top-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      max-width: fit-content;
+      height: 30px;
+      font-size: 15px;
+      &:hover{
+        box-shadow: 0px 0px 40px white;
+      }
+    }
+  }
+
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+table.cdk-drop-list-dragging tr:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
